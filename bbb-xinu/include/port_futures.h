@@ -1,0 +1,18 @@
+/* port_futures.h - Declaration for mapping local port numbers with futures */
+
+#define PORT_FUTURE_SIZE 10
+#define PORT_FUTURE_USED 1
+#define PORT_FUTURE_FREE 0
+
+typedef struct port_futent{
+	uint32 port;		/* Local port number for mapping */
+	future *fut;	/* Future related to child process which used for local port*/
+	int32 mapState;		/* State of entry: free/used */
+} port_futures;
+
+extern port_futures port_futures_tab[];
+
+/* Function prototype */
+int32 addPortFuture(future *f, uint32 localPort);
+future* checkPortFuture(uint32 localPort);
+

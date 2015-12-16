@@ -1,0 +1,14 @@
+#include <xinu.h>
+int free_mem_walk(){
+	struct	memblk	*prev, *curr;
+	//block = (struct memblk *)blkaddr;
+
+	prev = &memlist;			/* Walk along free list	*/
+	curr = memlist.mnext;
+	while (curr != NULL) {
+		printf("Length %d  Address %p\n",curr->mlength,curr);
+		prev = curr;
+		curr = curr->mnext;
+	}
+	return 0;
+}

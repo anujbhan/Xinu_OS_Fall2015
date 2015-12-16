@@ -1,0 +1,11 @@
+#include <prodcons.h>
+
+void producer(int count){
+/* Loop to produce values less than equal to count */
+int produce;
+	for(produce = 0; produce <= count; produce++){
+		printf("Produced : %d",produce);
+		/* Assign produced value */
+		n = produce;
+	}
+}

@@ -1,0 +1,21 @@
+<<<<<<< HEAD
+#include "prodcons.h"
+#include <xinu.h>
+void consumer(int count){
+int consume;
+	for(consume = 1; consume <= count; consume++){
+                wait(consumed);
+		printf("  Consumed : %d\n",n);
+		n--;
+                signal(produced);
+	}
+	send(prodconsPID,1);
+}
+=======
+#include <xinu.h>
+#include <prodcons.h>
+
+void consumer(int count) {
+}
+
+>>>>>>> a75985ab7fc1ce1d7d302515580fbed3d1b4fb1b

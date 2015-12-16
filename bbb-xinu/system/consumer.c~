@@ -1,0 +1,8 @@
+#include <prodcons.h>
+void consumer(int count){
+int consume;
+	for(consume = 0; consume <= count; consume++){
+		printf("Consumed : %d",n);
+		n = n - 1;
+	}
+}

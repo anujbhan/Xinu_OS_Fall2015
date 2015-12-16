@@ -1,0 +1,21 @@
+Assignment 4 report
+Functionality
+The solution exhibits an implementation of future and it has made used of following functions,
+•	Future_prods -> used to produce value
+•	Future_cons -> used to consume value
+•	Future_set -> A system call which is used to set value in future
+•	Future_get-> A system call which is used to get value from future
+•	Future_alloc-> allocate memory to future
+•	Future_free -> release memory used by future
+
+We have also used the send and receive system calls for IPC between prodcons command and its child processes. Along with changes in make file to include apps folder.
+
+
+
+
+Contribution
+
+Anuj
+Prodcons command file, make file, future_cons, future_get.
+Chitesh
+Future_set,  Future_alloc, Future_prods, future_free. 

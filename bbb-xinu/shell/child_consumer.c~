@@ -1,0 +1,41 @@
+#include "network_futures.h"
+#include <stdio.h>
+#include <string.h>
+#include "port_futures.h"
+
+int child_consumer(future *f, uint32 localPort){
+	
+	int partialSum;			/* To get the value of partial sum, TO-DO; Get a pointer to store the total sum */
+	uid32 slot;			/* Slot used for sending message */
+	int32 status; 			/* Status  */
+
+	/* Assign own PID to the future */
+	f->pid = getpid();
+	
+	/* Send UDP packet */
+	char msg[] = "Yo";
+	char dest_ip_str[] = "192.168.1.100";
+	uint32 dest_port = 7891;
+	
+	/* Add mapping of Port and Future */
+	status = addPortFuture(f, localPort);
+	
+	if(status == OK){
+		/* Send packet to server */
+		slot = net_send(msg, dest_ip_str, dest_port, localPort);
+	}else
+		return SYSERR;
+	
+	if(slot != SYSERR){
+		/* future_get will hold the value of partial sum, go to sleep and be woken up by send */
+		status = future_get(f, &partialSum);
+
+		if(status == OK)		
+			printf("Partial sum %d\n", partialSum);
+		else
+			printf("Someting ugly happened");
+	}else
+		return SYSERR;
+	
+}
+
